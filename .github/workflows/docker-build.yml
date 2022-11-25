@@ -49,21 +49,22 @@ jobs:
       
       - name: Docker Build
         working-directory: ${{ inputs.working_dir }}
-        run: docker build . -t ghcr.io/kubiclayer/${{ inputs.image_name }}:$(date +%s) -t ghcr.io/kubiclayer/${{ inputs.image_name }}:${{ steps.extract_branch_name.outputs.branch_name }} -t ghcr.io/kubiclayer/${{ inputs.image_name }}:latest
+        run: ls -lR
+#        run: docker build . -t ghcr.io/kubiclayer/${{ inputs.image_name }}:$(date +%s) -t ghcr.io/kubiclayer/${{ inputs.image_name }}:${{ steps.extract_branch_name.outputs.branch_name }} -t ghcr.io/kubiclayer/${{ inputs.image_name }}:latest
 
       - name: Run Tests - ${{ inputs.image_name }}
         working-directory: ${{ inputs.working_dir }}
         run: |
           echo "No additional tests defined"
 
-      - name: Upload Artifact - ${{ inputs.image_name }}
-        if: inputs.trigger_release
-        working-directory: ${{ inputs.working_dir }}
-        run: |
-          docker push --all-tags ghcr.io/kubiclayer/${{ inputs.image_name }}
-        env:
-          CR_PAT: "${{ secrets.GH_MANAGEPACKAGETOKEN }}"
-        continue-on-error: false
+#      - name: Upload Artifact - ${{ inputs.image_name }}
+#        if: inputs.trigger_release
+#        working-directory: ${{ inputs.working_dir }}
+#        run: |
+#          docker push --all-tags ghcr.io/kubiclayer/${{ inputs.image_name }}
+#        env:
+#          CR_PAT: "${{ secrets.GH_MANAGEPACKAGETOKEN }}"
+#        continue-on-error: false
 
 
 # https://docs.github.com/en/actions/using-workflows/reusing-workflows#example-reusable-workflow
