@@ -28,9 +28,9 @@ jobs:
   docker-build:
     name: Run Docker Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['lts/*']
+    # strategy:
+    #   matrix:
+    #     node-version: ['lts/*']
     steps:
       - uses: actions/checkout@v3
 
